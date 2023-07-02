@@ -1,6 +1,7 @@
 from fastapi import FastAPI, File, UploadFile
 from fastapi.responses import JSONResponse, HTMLResponse, RedirectResponse
 from pydantic import BaseModel
+import uvicorn
 import io
 import json
 import requests
@@ -55,3 +56,5 @@ def predict(file: UploadFile = File(...)):
 def index():
     return RedirectResponse(url="/docs")
 
+if __name__ == '__main__':
+    uvicorn.run('app:app', host='0.0.0.0')
